@@ -1,5 +1,8 @@
 package com.liyawei.nbateamviewer.ui
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -20,26 +23,41 @@ class MainActivity : AppCompatActivity(), TeamListContract.View, CoroutineScope 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
-    private lateinit var presenter: TeamListContract.Presenter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         job = Job()
         setContentView(R.layout.activity_main)
-        presenter = TeamListPresenter(this, NetworkClient, coroutineContext, Dispatchers.IO)
 
         teams_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         teams_list.adapter = TeamAdapter()
+
+        val model = ViewModelProviders.of(this).get(TeamViewModel::class.java)
+        subscribeUi(model)
+    }
+
+    private fun subscribeUi(viewModel: TeamViewModel) {
+        viewModel.getTeams().observe(this, Observer { teams ->
+            teams?.let {
+                (teams_list.adapter as TeamAdapter).setTeamList(it)
+            }
+        })
+
+        viewModel.getIsLoading().observe(this, Observer { value ->
+            value?.let { show ->
+                loading_spinner.visibility = if (show) View.VISIBLE else View.GONE
+            }
+        })
+
+        viewModel.shouldShowError().observe(this, Observer { value ->
+            value?.let { show ->
+                tv_error.visibility = if (show) View.VISIBLE else View.GONE
+            }
+        })
     }
 
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        presenter.loadTeams()
     }
 
     override fun showTeamList(teams: List<Team>) {

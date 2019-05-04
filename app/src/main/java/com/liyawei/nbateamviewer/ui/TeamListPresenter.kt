@@ -20,7 +20,7 @@ class TeamListPresenter(
                 result.await()?.let {
                     view.showTeamList(it)
                 }
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 view.showError()
             }
         }
