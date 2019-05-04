@@ -1,7 +1,7 @@
 package com.liyawei.nbateamviewer.viewmodel
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.liyawei.nbateamviewer.data.DataRepository
 
 class TeamViewModelFactory(private val repository: DataRepository) : ViewModelProvider.Factory {

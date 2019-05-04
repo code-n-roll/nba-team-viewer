@@ -1,7 +1,7 @@
 package com.liyawei.nbateamviewer.viewmodel
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.liyawei.nbateamviewer.data.DataRepository
 import com.liyawei.nbateamviewer.model.Team
 import kotlinx.coroutines.runBlocking

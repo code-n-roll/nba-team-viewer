@@ -1,9 +1,9 @@
 package com.liyawei.nbateamviewer.ui
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.liyawei.nbateamviewer.R
 import com.liyawei.nbateamviewer.model.Team
 import kotlinx.android.synthetic.main.viewholder_team_item.view.*

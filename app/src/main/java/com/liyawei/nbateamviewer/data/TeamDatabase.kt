@@ -1,8 +1,8 @@
 package com.liyawei.nbateamviewer.data
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.*
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.liyawei.nbateamviewer.model.Team
 
 @Dao

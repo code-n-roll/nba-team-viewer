@@ -1,6 +1,6 @@
 package com.liyawei.nbateamviewer.data
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.liyawei.nbateamviewer.model.Team
 import com.liyawei.nbateamviewer.network.INetworkClient
 import kotlinx.coroutines.Dispatchers

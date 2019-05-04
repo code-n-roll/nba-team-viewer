@@ -1,9 +1,9 @@
 package com.liyawei.nbateamviewer.ui
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
 import android.view.View
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.liyawei.nbateamviewer.model.Team
 import com.liyawei.nbateamviewer.viewmodel.TeamViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,7 +24,6 @@ import org.mockito.junit.MockitoRule
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.android.controller.ActivityController
-import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 class MainActivityTest {
